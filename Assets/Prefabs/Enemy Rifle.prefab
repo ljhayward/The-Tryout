@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 3564404542378145246}
   - component: {fileID: 3564404542378145232}
   - component: {fileID: 3564404542378145235}
+  - component: {fileID: 596951380}
   m_Layer: 8
   m_Name: Enemy Rifle
   m_TagString: Untagged
@@ -240,7 +241,7 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 4
+  slowdownDistance: 2.12
   pickNextWaypointDist: 1
   endReachedDistance: 2.6
   alwaysDrawGizmos: 0
@@ -281,3 +282,24 @@ MonoBehaviour:
   gun: {fileID: 3564404541670223190}
   turnSpeed: 5
   rotationModifier: 0
+--- !u!50 &596951380
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3564404542378145243}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

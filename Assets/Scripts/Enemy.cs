@@ -17,22 +17,31 @@ public class Enemy : MonoBehaviour
 
     GameObject target;
     Vector2 direction;
+    Animator myAnimator;
     int layerMask;
     bool canShoot = true;
+
+    //Rigidbody2D myRigidbody;
+    //bool playerHasSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player");
+        myAnimator = GetComponent<Animator>();
         layerMask = ~(LayerMask.GetMask("Enemy"));
+
+        //myRigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //FaceVelocity();
+        
         FacePlayer();
         IsPlayerInAim();
+        IsMoving();
+        
         
     }
 
@@ -47,19 +56,26 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    //void FaceVelocity()
-    //{
-    //    direction = aIPath.desiredVelocity;
-
-    //    transform.right = direction;
-    //}
-
     void IsPlayerInAim()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, maxAimDistance, layerMask);
         if (hit && hit.collider.name == "Player" && canShoot)
         {
             StartCoroutine(Shoot());
+        }
+    }
+
+    void IsMoving()
+    {
+        myAnimator.SetBool("isMoving", transform.hasChanged);
+        if (transform.hasChanged)
+        {
+            
+            transform.hasChanged = false;
+        }
+        else
+        {
+            
         }
     }
 

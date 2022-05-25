@@ -364,6 +364,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PathFinding
       objectReference: {fileID: 0}
+    - target: {fileID: 3191096973087503113, guid: c37e4519edc174443a4146fb2509bcb0, type: 3}
+      propertyPath: data.dataString
+      value: UEsDBBQAAAgIAACAn+vzExuBXAIAABIFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE2P2jAQ/SvI51IlQFnorQWW7YEFLVvtJRdjT4iFY0e2w9eK/96xk5CUqieGN29m3nw4n0QoWwBz2iyN4CvNgXzvEW+TL73W+QJnutdqK67QcD4Ed5kn0cB5o05oxGMfZnUOzgj2Q+2lJ0cIlkqk2uQLvoeZts4inFJpAV1GOx+tEPrskTP+9Kc+5ILW4MlbV7SmUe+GJgPlwLTUhtjQKlapmKR5AdxLbsmDcc2OB4GmsJma4YUzLaWwtRLiLkXodFtkYMC3ygXFxkL16OsUgQzEPnM+cTd6naYWXK3J0MtcGJxQlZb81NXYcmoPlbAjlaUvNB4FTVXO1T/ufhzcqdH5S1M2jnwJlwl2eKMXRq3rjLULz1vlcRjPicoD3Un4yEC96qXRpeLodKb0oaWFwbz9e+9slgE7tHgl9QEsi/8vx/dwC82fZ1LkuzDIUQVspQ7zDqsHg5v5hYLDYdg6BaJexW8L73TfvaDa8SyMdeiqu1Re3k6XxlPJIszMd1O6mTYKAlyLLkBR6S4bTOMeN/jg65R98DxT/1bq4rWveQIPIQFu+VH04Nro031ZNtOnFdhsXTopFLSiveMV5zTTSlUH1p1JE7YtTUpZJ2xfCv73aZFxyr6Np2yXwm46nMRxn0fp02QyZqN4OI6Ho4iE2xMK+6RyUwmtx4NbU21yhXfWfEJ6S0OLcOzc0NNSXHPdGblQqd4yA6DWVYa7cDBYBF8lX3CBA9qCc0KFfZPPhEjNDsCTe6IkdLo4O0OTNktCCnHUziMJmYVvRkI8fL/ljYGjgJMv3iS7kdsfUEsDBBQAAAgIAACAn+t9qhSabQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrSSWVqyqZllclJaapKlsYWhoW6KQZq5hYVZsomhsZmhsYmBUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACAn+vzExuBXAIAABIFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACAn+t9qhSabQAAAHgAAAAJACQAAAAAAAAAAAAAAKkCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAYQMAAAAA
+      objectReference: {fileID: 0}
     - target: {fileID: 3191096973087503114, guid: c37e4519edc174443a4146fb2509bcb0, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -421,10 +425,6 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1553782613}
-    - target: {fileID: 3564404542378145235, guid: 052f7c25e6c0bd048aa6e70902ee9659, type: 3}
-      propertyPath: turnSpeed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 3564404542378145243, guid: 052f7c25e6c0bd048aa6e70902ee9659, type: 3}
       propertyPath: m_Name
       value: Enemy Rifle
