@@ -12,7 +12,10 @@ public class Enemy : MonoBehaviour
     float cooldownTime = 5f;
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
+    [SerializeField] float turnSpeed;
+    [SerializeField] float rotationModifier;
 
+    GameObject target;
     Vector2 direction;
     int layerMask;
     bool canShoot = true;
@@ -20,23 +23,36 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player");
         layerMask = ~(LayerMask.GetMask("Enemy"));
     }
 
     // Update is called once per frame
     void Update()
     {
-        FaceVelocity();
+        //FaceVelocity();
+        FacePlayer();
         IsPlayerInAim();
         
     }
 
-    void FaceVelocity()
+    void FacePlayer()
     {
-        direction = aIPath.desiredVelocity;
-
-        transform.right = direction;
+        if (target != null)
+        {
+            Vector3 vectorToTarget = target.transform.position - transform.position;
+            float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - rotationModifier;
+            Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * turnSpeed);
+        }
     }
+
+    //void FaceVelocity()
+    //{
+    //    direction = aIPath.desiredVelocity;
+
+    //    transform.right = direction;
+    //}
 
     void IsPlayerInAim()
     {
