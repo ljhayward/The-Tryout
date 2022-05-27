@@ -16,10 +16,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] float rotationModifier;
 
     GameObject target;
+    AIDestinationSetter aIDest;
     Vector2 direction;
     Animator myAnimator;
     int layerMask;
     bool canShoot = true;
+    bool seenTarget = false;    //switch for when to start chasing
 
     //Rigidbody2D myRigidbody;
     //bool playerHasSpeed;
@@ -28,6 +30,8 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player");
+        aIDest = GetComponent<AIDestinationSetter>();
+        aIDest.target = target.transform;
         myAnimator = GetComponent<Animator>();
         layerMask = ~(LayerMask.GetMask("Enemy"));
 
@@ -59,6 +63,10 @@ public class Enemy : MonoBehaviour
     void IsPlayerInAim()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, maxAimDistance, layerMask);
+        if (hit && hit.collider.name == "Player" && !seenTarget)
+        {
+            seenTarget = true;      //may replace with method to start pathfinding
+        }
         if (hit && hit.collider.name == "Player" && canShoot)
         {
             StartCoroutine(Shoot());
