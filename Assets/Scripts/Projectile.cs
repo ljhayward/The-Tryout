@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] float damage = 50f;
     Rigidbody2D myRigidbody;
     //Vector2 direction;
     [SerializeField] float projectileSpeed = 0.5f;
@@ -24,7 +25,14 @@ public class Projectile : MonoBehaviour
         transform.position += transform.right * projectileSpeed * Time.deltaTime;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Health>())
+        {
+            collision.gameObject.GetComponent<Health>().setHealth(damage);
+        }
+        Destroy(gameObject);
+    }
 
 
-    
 }

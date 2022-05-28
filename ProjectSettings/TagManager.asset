@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Destroyables
+  - Final Doorway
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - Wall
   - Player
   - Enemy
-  - 
+  - Doorway
   - 
   - 
   - 
