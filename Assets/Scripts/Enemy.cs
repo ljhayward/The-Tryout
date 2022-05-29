@@ -98,6 +98,7 @@ public class Enemy : MonoBehaviour
         cooldownTime = Random.Range(minCooldownTime, maxCooldownTime);
         Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.eulerAngles.z + Random.Range(-bulletSpread, bulletSpread)));
         Instantiate(bullet, gun.position, rotation);
+        GetComponentInChildren<ParticleSystem>().Play();
         audioSource.PlayOneShot(gunShot, gunVolume);
         yield return new WaitForSeconds(cooldownTime);
         canShoot = true;

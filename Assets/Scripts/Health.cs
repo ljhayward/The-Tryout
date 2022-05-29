@@ -5,6 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] float health = 100f;
+    [SerializeField] GameObject blood;
     ProgressController progressController;
 
     private void Start()
@@ -26,6 +27,7 @@ public class Health : MonoBehaviour
             {
                 progressController.killEnemy(this.gameObject);
             }
+            Instantiate(blood, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

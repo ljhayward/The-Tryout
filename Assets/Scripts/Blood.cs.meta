@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: cc62064c7fd3c37419a028e21938f89d
+guid: 50d9203c7471b954590f857c43356c1a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - blood: {fileID: 2630961933001561039, guid: ec25dd5c7c07e074b874f17f128be1ef, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

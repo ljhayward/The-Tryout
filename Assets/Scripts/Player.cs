@@ -56,8 +56,7 @@ public class Player : MonoBehaviour
 
     void Run()
     {
-        //if (!isAlive)
-        //    return;
+        
 
         Vector2 playerVelocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
         myRigidbody.velocity = playerVelocity;
@@ -75,8 +74,7 @@ public class Player : MonoBehaviour
 
     void OnFire(InputValue value)
     {
-        //if (!isAlive)
-        //    return;
+        
         if (burstReady)
         {
             burstReady = false;
@@ -103,6 +101,7 @@ public class Player : MonoBehaviour
         {
             Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.eulerAngles.z + Random.Range(-bulletSpread, bulletSpread)));
             Instantiate(bullet, gun.position, rotation);
+            GetComponentInChildren<ParticleSystem>().Play();
             audioSource.PlayOneShot(gunShot, gunVolume);
             yield return new WaitForSeconds(burstTime);
         }
@@ -111,27 +110,6 @@ public class Player : MonoBehaviour
 
 
 
-    //void OnFire(InputValue value)
-    //{
-    //    //if (!isAlive)
-    //    //    return;
-    //    if (isShooting == false)
-    //    {
-    //        isShooting = true;
-    //        myAnimator.SetTrigger("isShooting");
-    //        StartCoroutine(Fire());
-    //    }
-    //}
-
-    //private IEnumerator Fire()
-    //{
-    //    for (int i = 1; i <= 3; i++)
-    //    {
-    //        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.eulerAngles.z + Random.Range(-bulletSpread, bulletSpread)));
-    //        Instantiate(bullet, gun.position, rotation);
-    //        yield return new WaitForSeconds(burstTime);
-    //    }
-    //    isShooting = false;
-    //}
+    
 
 }
