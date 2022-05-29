@@ -145783,10 +145783,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5076168092260952088, guid: 82ad94bcd8643e74db4ecafc77b7da9e, type: 3}
-      propertyPath: bulletSpread
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5076168092260952092, guid: 82ad94bcd8643e74db4ecafc77b7da9e, type: 3}
       propertyPath: m_Name
       value: Player

@@ -15,7 +15,12 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
     [SerializeField] float bulletSpread = 3f;
+    [SerializeField] float burstTime = 0.1f;
+    [SerializeField] float fireDelay = 0.8f;
     //Vector3 spread;
+
+    bool burstReady = true;
+    bool isShooting = false;
 
 
     
@@ -67,22 +72,60 @@ public class Player : MonoBehaviour
     {
         //if (!isAlive)
         //    return;
-        myAnimator.SetTrigger("isShooting");
-        Debug.Log("transform.rotation = " + transform.rotation);
-        Debug.Log("transform.rotation.eularAngles.z = " + transform.rotation.eulerAngles.z);
-        //Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.eulerAngles.z + randomSpread));
-        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.eulerAngles.z + Random.Range(-bulletSpread, bulletSpread)));
-        Instantiate(bullet, gun.position, rotation);
+        if (burstReady)
+        {
+            burstReady = false;
+            myAnimator.SetTrigger("isShooting");
+            StartCoroutine(BurstFire());
+        }
         
+    }
 
+    private IEnumerator BurstFire()
+    {
+        if (!isShooting)
+        {
+            isShooting = true;
+            StartCoroutine(Fire());
+        }
+        yield return new WaitForSeconds(fireDelay);
+        burstReady = true;
+    }
 
-
-
-
+    private IEnumerator Fire()
+    {
+        for (int i = 1; i <=3; i++)
+        {
+            Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.eulerAngles.z + Random.Range(-bulletSpread, bulletSpread)));
+            Instantiate(bullet, gun.position, rotation);
+            yield return new WaitForSeconds(burstTime);
+        }
+        isShooting = false;
     }
 
 
 
+    //void OnFire(InputValue value)
+    //{
+    //    //if (!isAlive)
+    //    //    return;
+    //    if (isShooting == false)
+    //    {
+    //        isShooting = true;
+    //        myAnimator.SetTrigger("isShooting");
+    //        StartCoroutine(Fire());
+    //    }
+    //}
 
+    //private IEnumerator Fire()
+    //{
+    //    for (int i = 1; i <= 3; i++)
+    //    {
+    //        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.eulerAngles.z + Random.Range(-bulletSpread, bulletSpread)));
+    //        Instantiate(bullet, gun.position, rotation);
+    //        yield return new WaitForSeconds(burstTime);
+    //    }
+    //    isShooting = false;
+    //}
 
 }
