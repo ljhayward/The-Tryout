@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     Rigidbody2D myRigidbody;
     Animator myAnimator;
     Camera mainCamera;
+    AudioSource audioSource;
 
     [SerializeField] float moveSpeed;
     [SerializeField] GameObject bullet;
@@ -17,6 +18,9 @@ public class Player : MonoBehaviour
     [SerializeField] float bulletSpread = 3f;
     [SerializeField] float burstTime = 0.1f;
     [SerializeField] float fireDelay = 0.8f;
+    [SerializeField] AudioClip gunShot;
+    [SerializeField] float gunVolume = 0.8f;
+    
     //Vector3 spread;
 
     bool burstReady = true;
@@ -31,6 +35,7 @@ public class Player : MonoBehaviour
         mainCamera = Camera.main;
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         
         //spread = new Vector3(0, 0, randomSpread);
         
@@ -98,6 +103,7 @@ public class Player : MonoBehaviour
         {
             Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.eulerAngles.z + Random.Range(-bulletSpread, bulletSpread)));
             Instantiate(bullet, gun.position, rotation);
+            audioSource.PlayOneShot(gunShot, gunVolume);
             yield return new WaitForSeconds(burstTime);
         }
         isShooting = false;

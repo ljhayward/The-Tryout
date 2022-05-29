@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] int bulletSpread;
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
+    [SerializeField] AudioClip gunShot;
+    [SerializeField] float gunVolume = 0.8f;
     [SerializeField] float turnSpeed;
     [SerializeField] float rotationModifier;
 
@@ -20,6 +22,7 @@ public class Enemy : MonoBehaviour
     AIDestinationSetter aIDest;
     Vector2 direction;
     Animator myAnimator;
+    AudioSource audioSource;
     int layerMask;
     bool canShoot = true;
     bool seenTarget = false;    //switch for when to start chasing
@@ -34,6 +37,7 @@ public class Enemy : MonoBehaviour
         aIDest = GetComponent<AIDestinationSetter>();
         aIDest.target = target.transform;
         myAnimator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         layerMask = ~(LayerMask.GetMask("Enemy"));
 
         //myRigidbody = GetComponent<Rigidbody2D>();
@@ -94,6 +98,7 @@ public class Enemy : MonoBehaviour
         cooldownTime = Random.Range(minCooldownTime, maxCooldownTime);
         Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.eulerAngles.z + Random.Range(-bulletSpread, bulletSpread)));
         Instantiate(bullet, gun.position, rotation);
+        audioSource.PlayOneShot(gunShot, gunVolume);
         yield return new WaitForSeconds(cooldownTime);
         canShoot = true;
     }
