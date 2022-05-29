@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour
 
     void FacePlayer()
     {
-        if (target != null)
+        if (target != null && seenTarget)
         {
             Vector3 vectorToTarget = target.transform.position - transform.position;
             float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - rotationModifier;
@@ -67,12 +67,17 @@ public class Enemy : MonoBehaviour
 
     void IsPlayerInAim()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, maxAimDistance, layerMask);
-        if (hit && hit.collider.name == "Player" && !seenTarget)
+        if(!aIPath.enabled)
         {
-            seenTarget = true;      //may replace with method to start pathfinding
+            RaycastHit2D sightHit = Physics2D.Raycast(transform.position, target.transform.position - transform.position, maxAimDistance, layerMask);
+            if (sightHit && sightHit.collider.name == "Player" && !seenTarget)
+            {
+                seenTarget = true;      //may replace with method to start pathfinding
+                aIPath.enabled = true;
+            }
         }
-        if (hit && hit.collider.name == "Player" && canShoot)
+        RaycastHit2D aimHit = Physics2D.Raycast(transform.position, transform.right, maxAimDistance, layerMask);
+        if (aimHit && aimHit.collider.name == "Player" && canShoot)
         {
             StartCoroutine(Shoot());
         }
