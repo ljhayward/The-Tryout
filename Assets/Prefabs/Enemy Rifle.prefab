@@ -279,6 +279,7 @@ MonoBehaviour:
   maxAimDistance: 100
   minCooldownTime: 2
   maxCooldownTime: 5
+  bulletSpread: 10
   bullet: {fileID: 1081284582172727672, guid: fac0439eaa639b94d981bf805cb4c6f2, type: 3}
   gun: {fileID: 3564404541670223190}
   turnSpeed: 5

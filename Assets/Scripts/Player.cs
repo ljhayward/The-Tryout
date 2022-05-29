@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
+    [SerializeField] float bulletSpread = 3f;
+    //Vector3 spread;
 
 
     
@@ -24,7 +26,8 @@ public class Player : MonoBehaviour
         mainCamera = Camera.main;
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-
+        
+        //spread = new Vector3(0, 0, randomSpread);
         
     }
 
@@ -65,15 +68,21 @@ public class Player : MonoBehaviour
         //if (!isAlive)
         //    return;
         myAnimator.SetTrigger("isShooting");
-        Instantiate(bullet, gun.position, transform.rotation);
+        Debug.Log("transform.rotation = " + transform.rotation);
+        Debug.Log("transform.rotation.eularAngles.z = " + transform.rotation.eulerAngles.z);
+        //Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.eulerAngles.z + randomSpread));
+        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.eulerAngles.z + Random.Range(-bulletSpread, bulletSpread)));
+        Instantiate(bullet, gun.position, rotation);
+        
 
-        
-        
-        
+
+
+
+
     }
 
 
 
 
-    
+
 }

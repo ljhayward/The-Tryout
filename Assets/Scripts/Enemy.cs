@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float minCooldownTime = 2f;
     [SerializeField] float maxCooldownTime = 10f;
     float cooldownTime = 5f;
+    [SerializeField] int bulletSpread;
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
     [SerializeField] float turnSpeed;
@@ -91,7 +92,9 @@ public class Enemy : MonoBehaviour
     {
         canShoot = false;
         cooldownTime = Random.Range(minCooldownTime, maxCooldownTime);
-        Instantiate(bullet, gun.position, transform.rotation);
+        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.eulerAngles.z + Random.Range(-bulletSpread, bulletSpread)));
+        Instantiate(bullet, gun.position, rotation);
+        //Instantiate(bullet, gun.position, transform.rotation);
         yield return new WaitForSeconds(cooldownTime);
         canShoot = true;
     }
