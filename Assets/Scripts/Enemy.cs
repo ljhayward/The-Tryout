@@ -25,15 +25,20 @@ public class Enemy : MonoBehaviour
     AudioSource audioSource;
     int layerMask;
     bool canShoot = true;
-    bool seenTarget = false;    //switch for when to start chasing
+    public bool seenTarget = false;    //switch for when to start chasing
 
     //Rigidbody2D myRigidbody;
     //bool playerHasSpeed;
 
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player");
+    }
+    void Start()
+    {
+        
         aIDest = GetComponent<AIDestinationSetter>();
         aIDest.target = target.transform;
         myAnimator = GetComponent<Animator>();
