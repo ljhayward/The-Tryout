@@ -27,18 +27,12 @@ public class Enemy : MonoBehaviour
     bool canShoot = true;
     public bool seenTarget = false;    //switch for when to start chasing
 
-    //Rigidbody2D myRigidbody;
-    //bool playerHasSpeed;
+    
 
     // Start is called before the first frame update
-
-    private void Awake()
-    {
-        target = GameObject.FindGameObjectWithTag("Player");
-    }
     void Start()
     {
-        
+        target = GameObject.FindGameObjectWithTag("Player");
         aIDest = GetComponent<AIDestinationSetter>();
         aIDest.target = target.transform;
         myAnimator = GetComponent<Animator>();

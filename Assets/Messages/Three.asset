@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3035d4e7cd7a81438e51f8495601768, type: 3}
+  m_Name: Three
+  m_EditorClassIdentifier: 
+  message: You have showed tremendous skill to make it this far. We have need of
+    a mind with your skillset. That mind will be removed from its flesh prison and
+    placed in to a new cybernetic body. Do not be alarmed. Death is only the beginning.

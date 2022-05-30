@@ -27,8 +27,16 @@ public class Health : MonoBehaviour
             {
                 progressController.killEnemy(this.gameObject);
             }
+
+            if (gameObject.CompareTag("Player"))
+            {
+                StartCoroutine(progressController.displayMessage(3));
+            }
+
             Instantiate(blood, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            
+            
         }
     }
 }

@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     Animator myAnimator;
     Camera mainCamera;
     AudioSource audioSource;
+    ProgressController progressController;
 
     [SerializeField] float moveSpeed;
     [SerializeField] GameObject bullet;
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        progressController = FindObjectOfType<ProgressController>();
         
         //spread = new Vector3(0, 0, randomSpread);
         
@@ -108,8 +110,14 @@ public class Player : MonoBehaviour
         isShooting = false;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag =="Final Doorway")
+        {
+            StartCoroutine(progressController.displayMessage(1));
+        }
+    }
 
 
-    
 
 }

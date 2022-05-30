@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ProgressController : MonoBehaviour
 {
+    [SerializeField] List<MessageSO> messages = new List<MessageSO>();
+    [SerializeField] GameObject popUp;
+
     List<GameObject> enemiesInScene = new List<GameObject>();
     GameObject finalDoorway;
     bool betrayalTriggered = false;
@@ -23,28 +27,17 @@ public class ProgressController : MonoBehaviour
             enemiesInScene.Add(enemy);
         }
         finalDoorway = GameObject.FindGameObjectWithTag("Final Doorway");
+        prepareSoldiers();
 
-        soldierOne.x = -30.1700001f;
-        soldierOne.y = 0.159999996f;
-        soldierOne.z = 0f;
-        soldierOneRotation.x = 0; soldierOneRotation.y = 0; soldierOneRotation.z = -88.351f;
-        
-        soldierTwo.x = -30.1700001f;
-        soldierTwo.y = -8.5f;
-        soldierTwo.z = 0f;
-        soldierTwoRotation.x = 0; soldierOneRotation.y = 0; soldierOneRotation.z = 271.649048f;
-        
-
-        soldierThree.x = -35.3600006f;
-        soldierThree.y = -4.19999981f;
-        soldierThree.z = 0f;
-        soldierThreeRotation.x = 0; soldierOneRotation.y = 0; soldierOneRotation.z = 4.863f;
+        StartCoroutine(displayMessage(0));
     }
+
+    
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void killEnemy(GameObject deadEnemy)
@@ -64,11 +57,41 @@ public class ProgressController : MonoBehaviour
         {
             betrayalTriggered = true;
             finalDoorway.GetComponent<BoxCollider2D>().enabled = true;
+            StartCoroutine(displayMessage(2));
+        }
+    }
+
+    //private void displayMessage(int i)
+    //{
+    //    //popUp = GameObject.Find("Message Panel");
+    //    popUp.GetComponentInChildren<TextMeshProUGUI>().text = messages[i].GetMessage();
+    //    popUp.SetActive(true);
+    //}
+
+    public IEnumerator displayMessage(int i)
+    {
+        popUp.GetComponentInChildren<TextMeshProUGUI>().text = messages[i].GetMessage();
+        popUp.SetActive(true);
+        yield return new WaitForSeconds(6f);
+        popUp.SetActive(false);
+        if (betrayalTriggered)
+        {
             Instantiate(soldier, soldierOne, soldierOneRotation);
             Instantiate(soldier, soldierTwo, soldierTwoRotation);
             Instantiate(soldier, soldierThree, soldierThreeRotation);
         }
     }
 
-    
+    void prepareSoldiers()
+    {
+        soldierOne.x = -30.1700001f; soldierOne.y = 0.159999996f; soldierOne.z = 0f;
+        soldierOneRotation.x = 0; soldierOneRotation.y = 0; soldierOneRotation.z = -88.351f;
+
+        soldierTwo.x = -30.1700001f; soldierTwo.y = -8.5f; soldierTwo.z = 0f;
+        soldierTwoRotation.x = 0; soldierOneRotation.y = 0; soldierOneRotation.z = 271.649048f;
+
+
+        soldierThree.x = -35.3600006f; soldierThree.y = -4.19999981f; soldierThree.z = 0f;
+        soldierThreeRotation.x = 0; soldierOneRotation.y = 0; soldierOneRotation.z = 4.863f;
+    }
 }
