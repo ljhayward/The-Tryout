@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ProgressController : MonoBehaviour
 {
@@ -32,13 +33,6 @@ public class ProgressController : MonoBehaviour
         StartCoroutine(displayMessage(0));
     }
 
-    
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void killEnemy(GameObject deadEnemy)
     {
@@ -61,13 +55,6 @@ public class ProgressController : MonoBehaviour
         }
     }
 
-    //private void displayMessage(int i)
-    //{
-    //    //popUp = GameObject.Find("Message Panel");
-    //    popUp.GetComponentInChildren<TextMeshProUGUI>().text = messages[i].GetMessage();
-    //    popUp.SetActive(true);
-    //}
-
     public IEnumerator displayMessage(int i)
     {
         popUp.GetComponentInChildren<TextMeshProUGUI>().text = messages[i].GetMessage();
@@ -80,6 +67,25 @@ public class ProgressController : MonoBehaviour
             Instantiate(soldier, soldierTwo, soldierTwoRotation);
             Instantiate(soldier, soldierThree, soldierThreeRotation);
         }
+    }
+
+    public void PlayerDead()
+    {
+        if (betrayalTriggered)
+        {
+            SceneManager.LoadScene(2);
+        }
+        else
+        {
+            StartCoroutine(displayMessage(3));
+            StartCoroutine(WaitForSceneLoad());
+        }
+    }
+
+    private IEnumerator WaitForSceneLoad()
+    {
+        yield return new WaitForSeconds(6f);
+        SceneManager.LoadScene(0);
     }
 
     void prepareSoldiers()

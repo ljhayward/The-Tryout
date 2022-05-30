@@ -22,7 +22,6 @@ public class Player : MonoBehaviour
     [SerializeField] AudioClip gunShot;
     [SerializeField] float gunVolume = 0.8f;
     
-    //Vector3 spread;
 
     bool burstReady = true;
     bool isShooting = false;
@@ -38,8 +37,6 @@ public class Player : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         progressController = FindObjectOfType<ProgressController>();
-        
-        //spread = new Vector3(0, 0, randomSpread);
         
     }
 

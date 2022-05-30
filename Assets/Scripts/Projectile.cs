@@ -8,10 +8,6 @@ public class Projectile : MonoBehaviour
     [SerializeField] float damage = 50f;
     Rigidbody2D myRigidbody;
     [SerializeField] float projectileSpeed = 0.5f;
-    
-    
-
-    
 
     // Update is called once per frame
     void Update()

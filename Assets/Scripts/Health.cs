@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class Health : MonoBehaviour
 
             if (gameObject.CompareTag("Player"))
             {
-                StartCoroutine(progressController.displayMessage(3));
+                progressController.PlayerDead();
             }
 
             Instantiate(blood, transform.position, Quaternion.identity);

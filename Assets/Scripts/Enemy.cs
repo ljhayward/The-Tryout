@@ -38,8 +38,6 @@ public class Enemy : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         layerMask = ~(LayerMask.GetMask("Enemy"));
-
-        //myRigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -66,12 +64,12 @@ public class Enemy : MonoBehaviour
 
     void IsPlayerInAim()
     {
-        if(!aIPath.enabled)
+        if(target != null && !aIPath.enabled)
         {
             RaycastHit2D sightHit = Physics2D.Raycast(transform.position, target.transform.position - transform.position, maxAimDistance, layerMask);
             if (sightHit && sightHit.collider.name == "Player" && !seenTarget)
             {
-                seenTarget = true;      //may replace with method to start pathfinding
+                seenTarget = true;
                 aIPath.enabled = true;
             }
         }
