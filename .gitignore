@@ -69,8 +69,3 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-/[Aa]ssets/Sprites/*
-/[Aa]ssets/Images/*
-/[Aa]ssets/Fonts/*
-/[Aa]ssets/Sounds/*
-/[Aa]ssets/AstarPathfindingProject/*
